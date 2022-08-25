@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/barry-website/static/css/main.6fcd96f1.css",
+    "main.js": "/barry-website/static/js/main.403eb867.js",
+    "static/js/787.27daab9a.chunk.js": "/barry-website/static/js/787.27daab9a.chunk.js",
+    "static/media/genetic-drift.gif": "/barry-website/static/media/genetic-drift.6765e2e5e2e7f93becd1.gif",
+    "static/media/deviceXchange.jpg": "/barry-website/static/media/deviceXchange.b94137f3796ee95e46f1.jpg",
+    "index.html": "/barry-website/index.html",
+    "main.6fcd96f1.css.map": "/barry-website/static/css/main.6fcd96f1.css.map",
+    "main.403eb867.js.map": "/barry-website/static/js/main.403eb867.js.map",
+    "787.27daab9a.chunk.js.map": "/barry-website/static/js/787.27daab9a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6fcd96f1.css",
+    "static/js/main.403eb867.js"
+  ]
+}
