@@ -10,10 +10,15 @@ root.render(
   //   <App />
   // </React.StrictMode>
   <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App />}></Route>
-      </Routes>
-    </BrowserRouter>
+    <Routes>
+      {/* <Route path="/" element={<App />}></Route> */}
+      <Route
+        path="/project-demos/dot-patterns/dot-patterns"
+        render={() => { window.location.href = "dot-patterns.html" }}
+      >
+      </Route>
+    </Routes>
+  </BrowserRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function
