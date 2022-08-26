@@ -11,7 +11,7 @@ root.render(
   // </React.StrictMode>
   <BrowserRouter>
     <Routes>
-      {/* <Route path="/" element={<App />}></Route> */}
+      <Route path="/" element={<App />}></Route>
       <Route
         path="/project-demos/dot-patterns/dot-patterns"
         render={() => { window.location.href = "dot-patterns.html" }}
