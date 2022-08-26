@@ -9,12 +9,15 @@ const height = canvas.height = window.innerHeight;
 const x0 = width / 2;
 const y0 = height / 2;
 
-// function to generate random number
-
 function random(min, max) {
   const num = Math.floor(Math.random() * (max - min + 1)) + min;
   return num;
 }
+
+function degToRad(angle) {
+  return angle * Math.PI / 180;
+}
+
 
 class Dot {
   constructor(x, y, size) {
@@ -22,7 +25,7 @@ class Dot {
     this.y = y;
     this.size = size;
     this.rad = Math.sqrt((this.x - x0) ** 2 + (this.y - y0) ** 2);
-    this.angle = (this.y - y0) / Math.abs(this.y - y0) * Math.acos((this.x - x0) / this.rad);   
+    this.angle = ((this.y - y0) < 0 ? -1 : 1) * Math.acos((this.x - x0) / this.rad);   
   }
 
   draw() {
@@ -33,7 +36,6 @@ class Dot {
   }
 
   update(radScaler, turnAngle) {
-    console.log(this.size, this.x, this.y)
     this.rad *= radScaler;
     this.x = this.rad * Math.cos(this.angle + turnAngle) + x0;
     this.y = this.rad * Math.sin(this.angle + turnAngle) + y0;
@@ -42,7 +44,7 @@ class Dot {
   }
 }
 
-const dots = [];
+let dots = [];
 
 // dots.push(new Dot(100, 100, 3), new Dot(800, 500, 4));
 
@@ -75,12 +77,16 @@ function latticeDots(rows) {
 
 latticeDots(100);
 
-function play() {
-  //ctx.fillStyle = 'rgba(0, 0, 0, 0.25)';
-  //ctx.fillRect(0, 0, width, height);
+function play(radScaler, turnAngle) {
   for (const dot of dots) {
     dot.draw();
-    dot.update(Math.PI / 120);
+    dot.update(radScaler, turnAngle);
   }
+}
+
+function reset() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  dots = [];
+  latticeDots(100);
 }
 
