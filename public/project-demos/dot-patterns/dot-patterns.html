@@ -9,7 +9,31 @@
   </head>
 
   <body>
-    <button onclick="play()">Play Animation</button>
+    <div class="row">
+      <div class="col-1">
+        <button 
+          id="playButton"
+          onclick="play(radiusScalerInput.value, Math.PI/120)"
+        >
+          Play Animation
+        </button>
+      </div>
+      <div class="col-1">
+        <label for="radiusScalerInput" class="form-label">Radius Scaler</label>
+      </div>
+      <div class="col-1">
+        <input 
+          type="range"
+          class="form-range"
+          id="radiusScalerInput"
+          min="0.9" max="1.1" value="1.0" step="0.01"
+          oninput="radiusScalerOutput.value = radiusScalerInput.value"
+        >
+        <output name="radiusScalerOutputName" id="radiusScalerOutput"></output>
+      </div>
+      <div class="col-9"></div>
+    </div>
+  
     <canvas></canvas>   
     <script src="./main.js"></script>
   </body>

@@ -75,12 +75,10 @@ function latticeDots(rows) {
 
 latticeDots(100);
 
-function play() {
-  //ctx.fillStyle = 'rgba(0, 0, 0, 0.25)';
-  //ctx.fillRect(0, 0, width, height);
+function play(radScaler, turnAngle) {
   for (const dot of dots) {
     dot.draw();
-    dot.update(Math.PI / 120);
+    dot.update(radScaler, turnAngle);
   }
 }
 
