@@ -32,9 +32,9 @@ class Dot {
     ctx.fill();
   }
 
-  update(turnAngle) {
+  update(radScaler, turnAngle) {
     console.log(this.size, this.x, this.y)
-    this.rad *= 1;
+    this.rad *= radScaler;
     this.x = this.rad * Math.cos(this.angle + turnAngle) + x0;
     this.y = this.rad * Math.sin(this.angle + turnAngle) + y0;
     this.angle += turnAngle
