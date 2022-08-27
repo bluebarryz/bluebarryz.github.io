@@ -18,6 +18,26 @@ function degToRad(angle) {
   return angle * Math.PI / 180;
 }
 
+function autoRunToggle() {
+  let toggle = document.getElementById("autoRunToggle");
+  toggle.innerHTML = "Auto Run: " + (toggle.value === "off" ? "On" : "Off");
+  toggle.value = (toggle.value === "off" ? "on" : "off");
+
+  if (toggle.value = "on") {
+    requestAnimationFrame(play);
+  }
+}
+
+function getDotArrangement() {
+  return document.getElementById("dotArrangement").value;
+}
+
+function setDotArrangement(mode) {
+  document.getElementById("dotArrangement").value = mode;
+}
+
+
+
 
 class Dot {
   constructor(x, y, size) {
@@ -45,6 +65,7 @@ class Dot {
 }
 
 let dots = [];
+let dotsCreated = false;
 
 // dots.push(new Dot(100, 100, 3), new Dot(800, 500, 4));
 
@@ -58,6 +79,7 @@ function randomDots() {
     );
     dots.push(dot);
   }
+  dotsCreated = true;
 }
 
 function latticeDots(rows) {
@@ -73,20 +95,26 @@ function latticeDots(rows) {
       dots.push(dot);
     }  
   }
+  dotsCreated = true;
 }
 
-latticeDots(100);
-
 function play(radScaler, turnAngle) {
+  console.log("hi")
+  if (!dotsCreated) {
+    reset(getDotArrangement());
+  }
   for (const dot of dots) {
     dot.draw();
     dot.update(radScaler, turnAngle);
   }
 }
 
-function reset() {
+function reset(dotArrangement) {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   dots = [];
-  latticeDots(100);
+  if (dotArrangement == "lattice") {
+    latticeDots(100);
+  } else if (dotArrangement == "random") {
+    randomDots();
+  }
 }
-
