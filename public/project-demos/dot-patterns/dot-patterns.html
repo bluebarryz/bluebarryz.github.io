@@ -13,25 +13,73 @@
       <div class="col-1">
         <button 
           id="playButton"
-          onclick="play(radiusScalerInput.value, Math.PI/120)"
+          onclick="play(radiusScalerInput.value, degToRad(rotationAngleInput.value))"
         >
           Play Animation
         </button>
       </div>
       <div class="col-1">
-        <label for="radiusScalerInput" class="form-label">Radius Scaler</label>
-      </div>
-      <div class="col-1">
-        <input 
-          type="range"
-          class="form-range"
-          id="radiusScalerInput"
-          min="0.9" max="1.1" value="1.0" step="0.01"
-          oninput="radiusScalerOutput.value = radiusScalerInput.value"
+        <button 
+          id="resetButton"
+          onclick="reset()"
         >
-        <output name="radiusScalerOutputName" id="radiusScalerOutput"></output>
+          Reset Animation
+        </button>
       </div>
-      <div class="col-9"></div>
+      <div class="col-3">
+        <div class="row">
+          <div class="col">
+            <label for="radiusScalerInput" class="form-label">Radius Scaler</label>
+          </div>
+          <div class="col">
+            <input 
+              type="range"
+              class="form-range"
+              id="radiusScalerInput"
+              value="1" min="0.9" max="1.1" step="0.01"
+              oninput="radiusScalerOutput.value = radiusScalerInput.value"
+            >
+          </div>
+          <div class="col">
+            <output name="radiusScalerOutputName" id="radiusScalerOutput"></output>
+          </div>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="row">
+          <div class="col">
+            <label for="rotationAngleInput" class="form-label">Rotation Angle</label>
+          </div>
+          <div class="col">
+            <input 
+              type="range"
+              class="form-range"
+              id="rotationAngleInput"
+              value="1.5" min="0.1" max="5.0" step="0.01"
+              oninput="rotationAngleOutput.value = rotationAngleInput.value"
+            >
+          </div>
+          <div class="col">
+            <output name="rotationAngleOutputName" id="rotationAngleOutput"></output>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <form>
+          <fieldset>
+            <legend style="display: flex;">Initial Dot Arrangement</legend>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+              <label class="form-check-label" for="inlineRadio1">Lattice</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+              <label class="form-check-label" for="inlineRadio1">Random</label>
+            </div>
+          </fieldset>
+        </form>       
+      </div>
+      <div class="col-8"></div>
     </div>
   
     <canvas></canvas>   
