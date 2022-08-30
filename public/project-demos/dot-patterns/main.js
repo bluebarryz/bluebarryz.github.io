@@ -20,12 +20,23 @@ function degToRad(angle) {
 
 function autoRunToggle() {
   let toggle = document.getElementById("autoRunToggle");
-  toggle.innerHTML = "Auto Run: " + (toggle.value === "off" ? "On" : "Off");
   toggle.value = (toggle.value === "off" ? "on" : "off");
-
-  if (toggle.value = "on") {
-    requestAnimationFrame(play);
+  toggle.innerHTML = "Auto Run: " + toggle.value;
+  
+  if (toggle.value === "on") {
+    loop();
   }
+}
+
+function getAutoRun() {
+  return document.getElementById("autoRunToggle").value;
+}
+function getRadiusScaler() {
+  return document.getElementById("radiusScalerInput").value;
+}
+
+function getRotationAngle() {
+  return degToRad(document.getElementById("rotationAngleInput").value);
 }
 
 function getDotArrangement() {
@@ -67,8 +78,6 @@ class Dot {
 let dots = [];
 let dotsCreated = false;
 
-// dots.push(new Dot(100, 100, 3), new Dot(800, 500, 4));
-
 function randomDots() {
   while(dots.length < 1500) {
     const size = random(1, 3);
@@ -98,8 +107,8 @@ function latticeDots(rows) {
   dotsCreated = true;
 }
 
+
 function play(radScaler, turnAngle) {
-  console.log("hi")
   if (!dotsCreated) {
     reset(getDotArrangement());
   }
@@ -108,6 +117,14 @@ function play(radScaler, turnAngle) {
     dot.update(radScaler, turnAngle);
   }
 }
+
+function loop() {
+  if (getAutoRun() === "on") {
+    play(getRadiusScaler(), getRotationAngle());
+  }
+  setTimeout(() => requestAnimationFrame(loop), 900);
+}
+
 
 function reset(dotArrangement) {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
