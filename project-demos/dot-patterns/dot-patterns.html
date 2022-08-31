@@ -15,17 +15,26 @@
           id="playButton"
           onclick="play(radiusScalerInput.value, degToRad(rotationAngleInput.value))"
         >
-          Play Animation
+          Play Next
+        </button>
+      </div> 
+      <div class="col-1">
+        <button 
+          id="autoRunToggle"
+          onclick="autoRunToggle()"
+          value="off"
+        >
+          Auto Run: off
         </button>
       </div>
       <div class="col-1">
         <button 
           id="resetButton"
-          onclick="reset()"
+          onclick="reset(dotArrangement.value)"
         >
           Reset Animation
         </button>
-      </div>
+      </div>       
       <div class="col-3">
         <div class="row">
           <div class="col">
@@ -66,15 +75,16 @@
       </div>
       <div class="col">
         <form>
+          <input type="hidden" id="dotArrangement" value="lattice">
           <fieldset>
-            <legend style="display: flex;">Initial Dot Arrangement</legend>
+            <!-- <legend style="display: flex;">Initial Dot Arrangement</legend> -->
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-              <label class="form-check-label" for="inlineRadio1">Lattice</label>
+              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="latticeRadio" value="lattice" checked="true" onclick="setDotArrangement('lattice')">
+              <label class="form-check-label" for="latticeRadio">Lattice</label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-              <label class="form-check-label" for="inlineRadio1">Random</label>
+              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="randomRadio" value="random" onclick="setDotArrangement('random')">
+              <label class="form-check-label" for="randomRadio">Random</label>
             </div>
           </fieldset>
         </form>       

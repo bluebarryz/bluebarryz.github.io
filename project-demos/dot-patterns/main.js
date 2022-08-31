@@ -18,6 +18,37 @@ function degToRad(angle) {
   return angle * Math.PI / 180;
 }
 
+function autoRunToggle() {
+  let toggle = document.getElementById("autoRunToggle");
+  toggle.value = (toggle.value === "off" ? "on" : "off");
+  toggle.innerHTML = "Auto Run: " + toggle.value;
+  
+  if (toggle.value === "on") {
+    loop();
+  }
+}
+
+function getAutoRun() {
+  return document.getElementById("autoRunToggle").value;
+}
+function getRadiusScaler() {
+  return document.getElementById("radiusScalerInput").value;
+}
+
+function getRotationAngle() {
+  return degToRad(document.getElementById("rotationAngleInput").value);
+}
+
+function getDotArrangement() {
+  return document.getElementById("dotArrangement").value;
+}
+
+function setDotArrangement(mode) {
+  document.getElementById("dotArrangement").value = mode;
+}
+
+
+
 
 class Dot {
   constructor(x, y, size) {
@@ -45,8 +76,7 @@ class Dot {
 }
 
 let dots = [];
-
-// dots.push(new Dot(100, 100, 3), new Dot(800, 500, 4));
+let dotsCreated = false;
 
 function randomDots() {
   while(dots.length < 1500) {
@@ -58,6 +88,7 @@ function randomDots() {
     );
     dots.push(dot);
   }
+  dotsCreated = true;
 }
 
 function latticeDots(rows) {
@@ -73,20 +104,34 @@ function latticeDots(rows) {
       dots.push(dot);
     }  
   }
+  dotsCreated = true;
 }
 
-latticeDots(100);
 
 function play(radScaler, turnAngle) {
+  if (!dotsCreated) {
+    reset(getDotArrangement());
+  }
   for (const dot of dots) {
     dot.draw();
     dot.update(radScaler, turnAngle);
   }
 }
 
-function reset() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  dots = [];
-  latticeDots(100);
+function loop() {
+  if (getAutoRun() === "on") {
+    play(getRadiusScaler(), getRotationAngle());
+  }
+  setTimeout(() => requestAnimationFrame(loop), 900);
 }
 
+
+function reset(dotArrangement) {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  dots = [];
+  if (dotArrangement == "lattice") {
+    latticeDots(100);
+  } else if (dotArrangement == "random") {
+    randomDots();
+  }
+}
