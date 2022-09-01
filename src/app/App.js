@@ -6,7 +6,7 @@ import Projects from '../components/projects'
 class App extends Component {
   render() {
     return (
-      <div>
+      <div class="homepage">
         <div className="top-heading">
           <h1>Barry's Site</h1>
           <p>I'm Barry Zhang. This is my website.</p>

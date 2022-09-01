@@ -37,11 +37,14 @@
   }
 }
 
-body {
+body{
+  background-color: black;
+}
+
+.homepage {
   margin-right: 15%;
   margin-left: 15%;
   margin-top: 5%;
-  background-color: black;
   color:white;
 }
 
