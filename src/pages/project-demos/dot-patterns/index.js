@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Canvas from '../../../components/Canvas'
+import DotPatternControls from '../../../components/DotPatternControls'
 import './style.css'
 const width =  window.innerWidth;
 const height =  window.innerHeight;
@@ -37,51 +38,78 @@ class Dot {
     }
 }
 
-let dots = [];
-let dotsCreated = false;
-
 function randomDots() {
-  while(dots.length < 1500) {
+    let dots = [];
+    while(dots.length < 1500) {
     const size = random(1, 3);
     const dot = new Dot(
-      random(0 + size, width - size),
-      random(0 + size, height - size),
-      size
+        random(0 + size, width - size),
+        random(0 + size, height - size),
+        size
     );
     dots.push(dot);
-  }
-  dotsCreatedBool = true;
+    }
+    return dots;
 }
 
 function latticeDots(rows) {
-  const spacing = height / rows;
-  const cols = Math.floor(width / spacing);
-  for (let i = 0; i <= rows; i++) {
+    let dots = [];
+    const spacing = height / rows;
+    const cols = Math.floor(width / spacing);
+    for (let i = 0; i <= rows; i++) {
     for (let j = 0; j <= cols; j++) {
-      const dot = new Dot(
+        const dot = new Dot(
         j * spacing,
         i * spacing,
         1
-      );
-      dots.push(dot);
+        );
+        dots.push(dot);
     }  
-  }
-  dotsCreatedBool = true;
-}
-
-let dotsArray = [];
-let dotsCreatedBool = false;
-
-function play(ctx, radScaler, turnAngle) {
-    for (const dot of dots) {
-      dot.draw(ctx);
-      dot.update(radScaler, turnAngle);
     }
+    return dots;
 }
 
-function DotPatterns() {
-    latticeDots(120);
-    return (<Canvas draw={play} dots={dotsArray}/>);
+class DotPatterns extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            dotsArray: latticeDots(80),
+            dotsCreatedBool: true,
+            radiusScaler: 1,
+            rotationAngle: Math.PI / 120,
+            autoRun: false,
+            dotArrangement: "lattice",
+        };
+    }
+
+    play(ctx) {
+        for (const dot of this.state.dotsArray) {
+          dot.draw(ctx);
+          dot.update(this.state.radiusScaler, this.state.rotationAngle);
+        }
+    }
+
+    playButtonClick() {
+        console.log("hello");
+        this.render();
+    }
+
+    resetButtonClick() {
+
+    }
+
+    render() {       
+        return (
+            <div>
+                <DotPatternControls 
+                    playButtonClick={() => this.playButtonClick}
+
+                />
+                <Canvas draw={(ctx) => this.play(ctx)}/>
+            </div>
+        );
+    }
+
 }
 
 export default DotPatterns;

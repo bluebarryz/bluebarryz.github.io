@@ -1,17 +1,35 @@
- body {
-    margin: 0;
-  }
-  
-  html {
-    height: 100%;
-  }
-  
-  body {
-    overflow: hidden;
-    height: inherit;
-  }
-  
-  .flex-container {
-    display: flex;
-    flex-wrap: nowrap;
-  }
+body {
+  margin: 0;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  overflow: hidden;
+  height: inherit;
+}
+
+
+.DPControlsCntainer {
+  margin: 0;
+  color: white; 
+  display: flex;
+  flex-direction: row; 
+  justify-content: flex-start;
+}
+
+.DPControlsCntainer > * {
+  margin-right: 1em;
+}
+
+
+legend {
+  display: flex;
+  font-size: 1rem;
+}
+
+.form-range {
+  width: 10%;
+}
