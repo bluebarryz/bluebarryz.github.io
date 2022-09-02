@@ -9,9 +9,10 @@ function DotPatternControls(props) {
         <div className="DPControlsCntainer">
             <button
                 id="playButton"
-                onClick={() => props.playButtonClick}
+                onClick={props.playButtonClick}
             >
                 Play Next
+
             </button>
             <button
                 id="autoRunToggle"

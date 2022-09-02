@@ -90,20 +90,19 @@ class DotPatterns extends React.Component {
     }
 
     playButtonClick() {
-        console.log("hello");
-        this.render();
+        this.setState({});
     }
 
     resetButtonClick() {
 
     }
 
-    render() {       
+    render() {
+        console.log("rendering");
         return (
             <div>
                 <DotPatternControls 
-                    playButtonClick={() => this.playButtonClick}
-
+                    playButtonClick={() => this.playButtonClick()}
                 />
                 <Canvas draw={(ctx) => this.play(ctx)}/>
             </div>
