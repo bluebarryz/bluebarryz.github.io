@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
+import { ThemeConsumer } from 'react-bootstrap/esm/ThemeProvider';
 import Canvas from '../../../components/Canvas'
 import DotPatternControls from '../../../components/DotPatternControls'
 import './style.css'
+
 const width =  window.innerWidth;
 const height =  window.innerHeight;
 
@@ -11,6 +13,10 @@ const y0 = height / 2;
 function random(min, max) {
   const num = Math.floor(Math.random() * (max - min + 1)) + min;
   return num;
+}
+
+function degToRad(angle) {
+    return angle * Math.PI / 180;
 }
 
 class Dot {
@@ -74,37 +80,63 @@ class DotPatterns extends React.Component {
         super(props);
         this.state = {
             dotsArray: latticeDots(80),
-            dotsCreatedBool: true,
-            radiusScaler: 1,
-            rotationAngle: Math.PI / 120,
             autoRun: false,
             dotArrangement: "lattice",
+            autoRun: false,
+            reset: false,
+        };
+        this.values = {
+            radiusScaler: 1,
+            rotationAngle: Math.PI / 120,
         };
     }
 
     play(ctx) {
         for (const dot of this.state.dotsArray) {
           dot.draw(ctx);
-          dot.update(this.state.radiusScaler, this.state.rotationAngle);
+          dot.update(this.values.radiusScaler, this.values.rotationAngle);
         }
     }
 
     playButtonClick() {
-        this.setState({});
+        this.setState({reset: false});
+    }
+
+    autoRunButtonClick() {
+        this.setState({autoRun: !this.state.autoRun});
     }
 
     resetButtonClick() {
+        this.setState({
+            dotsArray: this.state.dotArrangement === "lattice" ? latticeDots(80) : randomDots(),
+            reset: true,
+        });
+    }
 
+    radiusScalarChanged(radScaler) {
+        this.values.radiusScaler = radScaler;
+    }
+
+    rotationAngleChanged(rotationAng) {
+        this.values.rotationAngle = degToRad(rotationAng);
     }
 
     render() {
-        console.log("rendering");
         return (
             <div>
                 <DotPatternControls 
                     playButtonClick={() => this.playButtonClick()}
+                    autoRunButtonClick={() => this.autoRunButtonClick()}
+                    autoRun={this.state.autoRun}
+                    resetButtonClick={() => this.resetButtonClick()}
+                    radiusScalarChanged={(radScaler) => this.radiusScalarChanged(radScaler)}
+                    rotationAngleChanged={(rotationAng) => this.rotationAngleChanged(rotationAng)}
                 />
-                <Canvas draw={(ctx) => this.play(ctx)}/>
+                <Canvas 
+                    draw={(ctx) => this.play(ctx)} 
+                    reset={this.state.reset}
+                    autoRun={this.state.autoRun}
+                />
             </div>
         );
     }

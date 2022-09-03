@@ -30,6 +30,24 @@ legend {
   font-size: 1rem;
 }
 
-.form-range {
-  width: 10%;
+.slider {
+  display: flex;
+  flex-direction: row; 
+  justify-content: flex-start;
+}
+
+
+div.slider label.form-label {
+  white-space: nowrap;
+}
+
+
+div.slider input.form-range {
+  width: 10em;
+  margin-right: 1em;
+  margin-left: 1em;
+}
+
+div.slider label.slider-value {
+  width: 2.3em;
 }
