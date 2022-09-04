@@ -11,7 +11,7 @@ const Canvas = props => {
     const render = () => {
       if (!reset) {
         draw(ctx);
-      } else {
+      } if (reset) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
       }
       

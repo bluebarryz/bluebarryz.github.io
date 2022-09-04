@@ -31,6 +31,61 @@ class Slider extends React.Component {
     }
 }
 
+function FormCheck(props){   
+    return (
+        <div className="form-check form-check-inline">
+            <input 
+                className="form-check-input" 
+                type="radio" 
+                name="inlineRadioOptions" 
+                id={props.id} 
+                value={props.value}
+                checked={props.checked}
+                onChange={props.handleChange}
+            ></input>
+            <label className="form-check-label" htmlFor="latticeRadio">{props.label}</label>
+        </div>
+    );  
+}
+
+class Form extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            value: this.props.value
+        };
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange(e) {
+        this.setState({value: e.target.value})
+        this.props.dotArrangementChanged(e.target.value);
+    }
+
+    render() {
+        return (
+            <form>
+                <fieldset>
+                    <FormCheck
+                        id="latticeRadio"
+                        value="lattice"
+                        label="Lattice"
+                        checked={this.state.value === "lattice"}
+                        handleChange={this.handleChange}
+                    />
+                    <FormCheck
+                        id="randomRadio"
+                        value="random"
+                        label="Random"
+                        checked={this.state.value === "random"}
+                        handleChange={this.handleChange}
+                    />
+                </fieldset>
+            </form>
+        );
+    }
+}
+
 class DotPatternControls extends React.Component {
     render() {
         return (
@@ -51,7 +106,7 @@ class DotPatternControls extends React.Component {
                     id="resetButton"
                     onClick={this.props.resetButtonClick}
                 >
-                    Reset Animation
+                    Reset
                 </button>
 
                 <Slider 
@@ -68,20 +123,11 @@ class DotPatternControls extends React.Component {
                     value="1.5"
                     sendValuesToApp={this.props.rotationAngleChanged}
                 />
+                <Form 
+                    value="lattice"
+                    dotArrangementChanged={this.props.dotArrangementChanged}
+                />
                 
-                <form>
-                    <input type="hidden" id="dotArrangement" value="lattice"></input>
-                    <fieldset>
-                        <div className="form-check form-check-inline">
-                            <input className="form-check-input" type="radio" name="inlineRadioOptions" id="latticeRadio" value="lattice" checked={true}></input>
-                            <label className="form-check-label" htmlFor="latticeRadio">Lattice</label>
-                        </div>
-                        <div className="form-check form-check-inline">
-                            <input className="form-check-input" type="radio" name="inlineRadioOptions" id="randomRadio" value="random"></input>
-                            <label className="form-check-label" htmlFor="randomRadio">Random</label>
-                        </div>
-                    </fieldset>
-                </form> 
             </div>
         );
     }

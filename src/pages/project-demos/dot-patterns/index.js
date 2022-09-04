@@ -81,13 +81,13 @@ class DotPatterns extends React.Component {
         this.state = {
             dotsArray: latticeDots(80),
             autoRun: false,
-            dotArrangement: "lattice",
             autoRun: false,
             reset: false,
         };
         this.values = {
             radiusScaler: 1,
             rotationAngle: Math.PI / 120,
+            dotArrangement: "lattice",
         };
     }
 
@@ -108,7 +108,7 @@ class DotPatterns extends React.Component {
 
     resetButtonClick() {
         this.setState({
-            dotsArray: this.state.dotArrangement === "lattice" ? latticeDots(80) : randomDots(),
+            dotsArray: this.values.dotArrangement === "lattice" ? latticeDots(80) : randomDots(),
             reset: true,
         });
     }
@@ -121,6 +121,10 @@ class DotPatterns extends React.Component {
         this.values.rotationAngle = degToRad(rotationAng);
     }
 
+    dotArrangementChanged(arrangement) {
+        this.values.dotArrangement = arrangement;
+    }
+
     render() {
         return (
             <div>
@@ -131,6 +135,7 @@ class DotPatterns extends React.Component {
                     resetButtonClick={() => this.resetButtonClick()}
                     radiusScalarChanged={(radScaler) => this.radiusScalarChanged(radScaler)}
                     rotationAngleChanged={(rotationAng) => this.rotationAngleChanged(rotationAng)}
+                    dotArrangementChanged={(arrangement) => this.dotArrangementChanged(arrangement)}
                 />
                 <Canvas 
                     draw={(ctx) => this.play(ctx)} 
