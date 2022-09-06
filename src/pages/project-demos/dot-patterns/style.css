@@ -11,10 +11,21 @@ body {
   height: inherit;
 }
 
+canvas {
+  position: absolute;
+}
+
 
 .DPControlsCntainer {
   margin: 0;
   color: white; 
+  display: flex;
+  flex-direction: row; 
+  justify-content: flex-start;
+  max-height: 3em;
+}
+
+div.DPControlsCntainer > div{
   display: flex;
   flex-direction: row; 
   justify-content: flex-start;
@@ -24,13 +35,25 @@ body {
   margin-right: 1em;
 }
 
-
-legend {
-  display: flex;
-  font-size: 1rem;
+.accordion {
+  z-index: 1;
+  width: 70%;
 }
 
-.slider {
+.accordion > * {
+  width: 100%;
+}
+
+.accordion-button {
+  max-height: 3em;
+}
+
+.accordion-collapse {
+  background-color: rgba(95, 97, 95, 0.8);
+  color: white;
+}
+
+.accordion-body {
   display: flex;
   flex-direction: row; 
   justify-content: flex-start;
@@ -48,6 +71,14 @@ div.slider input.form-range {
   margin-left: 1em;
 }
 
+#numDotsInput {
+  width: 15em;
+}
+
 div.slider label.slider-value {
   width: 2.3em;
+}
+
+#numDotsField {
+  width: 3em;
 }

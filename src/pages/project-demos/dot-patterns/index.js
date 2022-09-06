@@ -44,14 +44,13 @@ class Dot {
     }
 }
 
-function randomDots() {
+function randomDots(numDots) {
     let dots = [];
-    while(dots.length < 1500) {
-    const size = random(1, 3);
+    while(dots.length < numDots) {
     const dot = new Dot(
-        random(0 + size, width - size),
-        random(0 + size, height - size),
-        size
+        random(1, width - 1),
+        random(1, height - 1),
+        1
     );
     dots.push(dot);
     }
@@ -61,12 +60,13 @@ function randomDots() {
 function latticeDots(rows) {
     let dots = [];
     const spacing = height / rows;
-    const cols = Math.floor(width / spacing);
+    const paddingTop = 5;
+    const cols = Math.floor(width - paddingTop/ spacing);
     for (let i = 0; i <= rows; i++) {
     for (let j = 0; j <= cols; j++) {
         const dot = new Dot(
-        j * spacing,
-        i * spacing,
+        j * spacing + paddingTop,
+        i * spacing + paddingTop,
         1
         );
         dots.push(dot);
@@ -81,13 +81,13 @@ class DotPatterns extends React.Component {
         this.state = {
             dotsArray: latticeDots(80),
             autoRun: false,
-            autoRun: false,
             reset: false,
         };
         this.values = {
             radiusScaler: 1,
             rotationAngle: Math.PI / 120,
             dotArrangement: "lattice",
+            numDots: 80,
         };
     }
 
@@ -107,8 +107,9 @@ class DotPatterns extends React.Component {
     }
 
     resetButtonClick() {
+        const numDots = this.values.numDots;
         this.setState({
-            dotsArray: this.values.dotArrangement === "lattice" ? latticeDots(80) : randomDots(),
+            dotsArray: this.values.dotArrangement === "lattice" ? latticeDots(numDots) : randomDots(numDots),
             reset: true,
         });
     }
@@ -125,6 +126,11 @@ class DotPatterns extends React.Component {
         this.values.dotArrangement = arrangement;
     }
 
+    numDotsChanged(value) {
+        this.values.numDots = value;
+        this.resetButtonClick();
+    }
+
     render() {
         return (
             <div>
@@ -136,6 +142,9 @@ class DotPatterns extends React.Component {
                     radiusScalarChanged={(radScaler) => this.radiusScalarChanged(radScaler)}
                     rotationAngleChanged={(rotationAng) => this.rotationAngleChanged(rotationAng)}
                     dotArrangementChanged={(arrangement) => this.dotArrangementChanged(arrangement)}
+                    dotArrangement="lattice"
+                    numDotsChanged={(value) => this.numDotsChanged(value)}
+                    numDots={this.values.numDots}
                 />
                 <Canvas 
                     draw={(ctx) => this.play(ctx)} 
