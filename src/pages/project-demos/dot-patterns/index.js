@@ -103,10 +103,14 @@ class DotPatterns extends React.Component {
     }
 
     autoRunButtonClick() {
-        this.setState({autoRun: !this.state.autoRun});
+        console.log("click");
+        this.setState({
+            autoRun: !this.state.autoRun,
+        });
     }
 
     resetButtonClick() {
+        console.log("reset");
         const numDots = this.values.numDots;
         this.setState({
             dotsArray: this.values.dotArrangement === "lattice" ? latticeDots(numDots) : randomDots(numDots),
