@@ -140,9 +140,11 @@ class DotPatterns extends React.Component {
                     autoRun={this.state.autoRun}
                     resetButtonClick={() => this.resetButtonClick()}
                     radiusScalarChanged={(radScaler) => this.radiusScalarChanged(radScaler)}
+                    radiusScalar={this.values.radiusScaler}
                     rotationAngleChanged={(rotationAng) => this.rotationAngleChanged(rotationAng)}
+                    rotationAngle={this.values.radiusScaler}
                     dotArrangementChanged={(arrangement) => this.dotArrangementChanged(arrangement)}
-                    dotArrangement="lattice"
+                    dotArrangement={this.values.dotArrangement}
                     numDotsChanged={(value) => this.numDotsChanged(value)}
                     numDots={this.values.numDots}
                 />

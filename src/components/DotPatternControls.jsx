@@ -1,36 +1,21 @@
 import React, { Component } from 'react'
 
-class Slider extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            value: this.props.value,
-        }
-    }
-
-    handleChange(e) {
-        this.setState({ value: e.target.value });
-        this.props.sendValuesToApp(e.target.value);
-    }
-
-    render() {
-        //console.log("Slider");
-        console.log(this.state.value);
-        return (
-            <div className="slider">
-                <label htmlFor={this.props.sliderID} className="form-label">{this.props.sliderName}</label>
-                <input
-                    type="range"
-                    className="form-range"
-                    id={this.props.sliderID}
-                    value={this.state.value}
-                    min={this.props.min} max={this.props.max} step={this.props.step}
-                    onChange={this.handleChange.bind(this)}
-                ></input>
-                <label htmlFor={this.props.sliderID} className="form-label slider-value">{this.state.value}</label>
-            </div>
-        );
-    }
+function Slider(props) {
+    //console.log("Slider");
+    return (
+        <div className="slider">
+            <label htmlFor={props.sliderID} className="form-label">{props.sliderName}</label>
+            <input
+                type="range"
+                className="form-range"
+                id={props.sliderID}
+                value={props.value}
+                min={props.min} max={props.max} step={props.step}
+                onChange={props.handleChange}
+            ></input>
+            <label htmlFor={props.sliderID} className="form-label slider-value">{props.value}</label>
+        </div>
+    );
 }
 
 function FormCheck(props) {
@@ -81,23 +66,35 @@ class DotPatternControls extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            radiusScalar: this.props.radiusScalar,
+            rotationAngle: this.props.rotationAngle,
             dotArrangement: this.props.dotArrangement,
             numDots: this.props.numDots,
             errMsg: null,
         };
     }
 
+    handleChangeSlider(e, sendValuesToApp) {
+        this.setState({ [e.target.id]: e.target.value });
+        sendValuesToApp(e.target.value);
+    }
+
     handleChangeForm(e) {
-        this.setState({ 
-            dotArrangement: e.target.value,
-            numDots: e.target.value === "lattice" ? 80 : 2000, 
+        const radiusScalarNew = (e.target.value === "lattice" ? 1 : 1.04);
+        const dotArrangementNew = e.target.value;
+        const numDotsNew = (e.target.value === "lattice" ? 80 : 2000);
+        this.setState({
+            radiusScalar: radiusScalarNew,
+            dotArrangement: dotArrangementNew,
+            numDots: numDotsNew,
         })
-        this.props.dotArrangementChanged(e.target.value);       
+        this.props.radiusScalarChanged(radiusScalarNew);
+        this.props.dotArrangementChanged(dotArrangementNew);
+        this.props.numDotsChanged(numDotsNew);
     }
 
     render() {
         //console.log("DotPatternControls");
-        //console.log(this.state.numDots)
         let numDotsSlider;
         if (this.state.dotArrangement === "lattice") {
             numDotsSlider = {
@@ -108,7 +105,7 @@ class DotPatternControls extends React.Component {
         } else {
             numDotsSlider = {
                 sliderName: "Number of Dots",
-                min: "1", 
+                min: "1",
                 max: "5000",
             };
         }
@@ -145,31 +142,34 @@ class DotPatternControls extends React.Component {
                         <div id="collapseOne" className="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                             <div className="accordion-body">
                                 <Slider
-                                    sliderID="radiusScalerInput"
+                                    sliderID="radiusScalar"
                                     sliderName="Radius Scaler"
                                     min="0.9" max="1.1" step="0.01"
-                                    value="1"
+                                    value={this.state.radiusScalar}
                                     sendValuesToApp={this.props.radiusScalarChanged}
+                                    handleChange={(e) => this.handleChangeSlider(e, this.props.radiusScalarChanged)}
                                 />
                                 <Slider
-                                    sliderID="rotationAngleInput"
+                                    sliderID="rotationAngle"
                                     sliderName="Rotation Angle"
                                     min="0.1" max="5" step="0.01"
-                                    value="1.5"
+                                    value={this.state.rotationAngle}
                                     sendValuesToApp={this.props.rotationAngleChanged}
+                                    handleChange={(e) => this.handleChangeSlider(e, this.props.rotationAngleChanged)}
                                 />
                                 <Form
                                     dotArrangement={this.state.dotArrangement}
                                     handleChange={this.handleChangeForm.bind(this)}
                                 />
                                 <Slider
-                                    sliderID="numDotsInput"
+                                    sliderID="numDots"
                                     sliderName={numDotsSlider.sliderName}
-                                    min={numDotsSlider.min} 
-                                    max={numDotsSlider.max} 
+                                    min={numDotsSlider.min}
+                                    max={numDotsSlider.max}
                                     step="1"
                                     value={this.state.numDots}
                                     sendValuesToApp={this.props.numDotsChanged}
+                                    handleChange={(e) => this.handleChangeSlider(e, this.props.numDotsChanged)}
                                 />
                             </div>
                         </div>
