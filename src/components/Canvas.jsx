@@ -9,21 +9,21 @@ const Canvas = props => {
     let animationFrameId;
 
     const render = () => {
-      console.log(animationFrameId)
-      //console.log(reset);
-      
+      console.log(reset);      
       if (!reset) {
         if (!animationFrameId || (animationFrameId % 50 === 0)) {
           draw(ctx);
         }        
       } if (reset) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        //draw(ctx);
+        draw(ctx);
+        if (autoRun) {
+          this.props.setResetFalse();
+        }
       }
       
       if (autoRun) {
         animationFrameId = window.requestAnimationFrame(render);
-        //setTimeout(() => {}, 900);
       } 
     }
     render();
