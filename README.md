@@ -1,3 +1,3 @@
-# Getting Started with Create React App
+# bluebarryz.github.io
 
 My Website
