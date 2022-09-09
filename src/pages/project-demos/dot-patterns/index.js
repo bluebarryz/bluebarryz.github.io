@@ -103,27 +103,19 @@ class DotPatterns extends React.Component {
     }
 
     autoRunButtonClick() {
-        //console.log("click");
         this.setState({
             autoRun: !this.state.autoRun,
-            reset: false
+            reset: false,
         });
     }
 
     resetButtonClick() {
-        console.log("reset");
         const numDots = this.values.numDots;
         this.setState({
             dotsArray: this.values.dotArrangement === "lattice" ? latticeDots(numDots) : randomDots(numDots),
+            autoRun: false,
             reset: true,
         });
-        if (this.state.autoRun) {
-            this.autoRunButtonClick();
-        }
-    }
-
-    setResetFalse() {
-        this.setState({reset: false});
     }
 
     radiusScalarChanged(radScaler) {
@@ -164,7 +156,6 @@ class DotPatterns extends React.Component {
                     draw={(ctx) => this.play(ctx)} 
                     reset={this.state.reset}
                     autoRun={this.state.autoRun}
-                    setResetFalse={() => this.setResetFalse}
                 />
             </div>
         );

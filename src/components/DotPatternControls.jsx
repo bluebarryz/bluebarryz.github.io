@@ -40,7 +40,7 @@ class Form extends React.Component {
     render() {
         //console.log("Form");
         return (
-            <form class="dot-arrangement-form">
+            <form className="dot-arrangement-form">
                 <fieldset>
                     <FormCheck
                         id="latticeRadio"

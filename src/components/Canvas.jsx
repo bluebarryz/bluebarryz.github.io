@@ -9,17 +9,13 @@ const Canvas = props => {
     let animationFrameId;
 
     const render = () => {
-      console.log(reset);      
       if (!reset) {
         if (!animationFrameId || (animationFrameId % 50 === 0)) {
           draw(ctx);
         }        
-      } if (reset) {
+      } else if (reset) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         draw(ctx);
-        if (autoRun) {
-          this.props.setResetFalse();
-        }
       }
       
       if (autoRun) {
