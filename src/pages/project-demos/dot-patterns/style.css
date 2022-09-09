@@ -25,7 +25,7 @@ canvas {
   max-height: 3em;
 }
 
-div.DPControlsCntainer > div{
+div.DPControlsCntainer > div {
   display: flex;
   flex-direction: row; 
   justify-content: flex-start;
@@ -57,6 +57,22 @@ div.DPControlsCntainer > div{
   display: flex;
   flex-direction: row; 
   justify-content: flex-start;
+
+  /* @media (min-width: 1000px) {  
+      flex-direction: column; 
+  } */
+}
+
+.accordion-body input {
+  vertical-align: middle;
+}
+
+.accordion-body * {
+  margin-bottom: 0;
+}
+
+.accordion-item {
+  background-color: #61dafb;
 }
 
 .accordion-item:last-of-type {
@@ -71,6 +87,8 @@ div.DPControlsCntainer > div{
 .accordion-item:last-of-type .accordion-button.collapsed {
   border-radius: 0;
 }
+
+
 
 div.slider label.form-label {
   white-space: nowrap;
