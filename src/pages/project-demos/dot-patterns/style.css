@@ -35,9 +35,13 @@ div.DPControlsCntainer > div {
   margin-right: 1em;
 }
 
+#playButton {
+  min-width: 5.5em;
+}
+
 .accordion {
   z-index: 1;
-  width: 70%;
+  width: 30%;
 }
 
 .accordion > * {
@@ -55,16 +59,17 @@ div.DPControlsCntainer > div {
 
 .accordion-body {
   display: flex;
-  flex-direction: row; 
+  flex-direction: column; 
   justify-content: flex-start;
-
-  /* @media (min-width: 1000px) {  
-      flex-direction: column; 
-  } */
+  overflow: scroll;
 }
 
 .accordion-body input {
   vertical-align: middle;
+}
+
+.accordion-body button {
+  margin-bottom: 0.5em;
 }
 
 .accordion-body * {
@@ -88,6 +93,14 @@ div.DPControlsCntainer > div {
   border-radius: 0;
 }
 
+.slider{ 
+  flex: 1;
+  max-width: 30%; 
+  display: flex;
+  flex-direction: row; 
+  justify-content: flex-start;
+  margin-bottom: 1em;
+}
 
 
 div.slider label.form-label {
@@ -98,7 +111,10 @@ div.slider label.form-label {
 div.slider input.form-range {
   width: 10em;
   margin-right: 1em;
-  margin-left: 1em;
+}
+
+.dot-arrangement-form {
+  margin-bottom: 1em;
 }
 
 #numDotsInput {
@@ -109,6 +125,28 @@ div.slider label.slider-value {
   width: 2.3em;
 }
 
+div.slider label.form-label {
+  margin-right: 1em;
+}
+
 #numDotsField {
   width: 3em;
+}
+
+
+
+@media (max-width: 1500px) {
+  .accordion {
+    width: 55%;
+  }
+
+  .slider{ 
+    flex: 1;
+    display: flex;
+    flex-direction: column; 
+  }
+
+  div.slider input.form-range {
+    margin-right: 0;
+  }
 }
