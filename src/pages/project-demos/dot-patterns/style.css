@@ -59,6 +59,18 @@ div.DPControlsCntainer > div{
   justify-content: flex-start;
 }
 
+.accordion-item:last-of-type {
+  border-radius: 0;
+  max-height: 3em;
+}
+
+.accordion-item:first-of-type .accordion-button {
+  border-radius: 0;
+}
+
+.accordion-item:last-of-type .accordion-button.collapsed {
+  border-radius: 0;
+}
 
 div.slider label.form-label {
   white-space: nowrap;
