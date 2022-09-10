@@ -7,7 +7,6 @@ import './style.css'
 const controlsHeight = 50;
 const width =  window.innerWidth;
 const height =  window.innerHeight - controlsHeight;
-console.log(height);
 
 const x0 = width / 2;
 const y0 = height / 2 + controlsHeight; 

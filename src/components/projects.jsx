@@ -3,15 +3,7 @@ import Project from "./project"
 import ProjectsData from "../data/projects-data"
 
 export default class Projects extends Component {
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-
-    //     };
-    // }   
     render() {
-        console.log("hello")
-        console.log(ProjectsData[0]);
         const projectsCount = ProjectsData.length;
         let rows = [];
         for (let i = 0; i < projectsCount; i += 2) {

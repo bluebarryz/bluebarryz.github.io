@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
-import './App.css';
-import Projects from '../components/projects'
+import Home from '../components/Home';
+import DotPatterns from '../pages/project-demos/dot-patterns/index';
+import { Route, Routes } from "react-router-dom";
 
 
 class App extends Component {
   render() {
+    console.log(DotPatterns);
     return (
-      <div class="homepage">
-        <div className="top-heading">
-          <h1>Barry's Site</h1>
-          <p>I'm Barry Zhang. This is my website.</p>
-        </div>
-        <h2>Projects</h2>
-        <Projects />
+      <div className="app">
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/dot-patterns" element={<DotPatterns />}></Route>
+        </Routes>
+        
       </div>
     );
   }
