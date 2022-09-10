@@ -1,14 +1,5 @@
-body {
-  margin: 0;
-}
-
 html {
   height: 100%;
-}
-
-body {
-  overflow: hidden;
-  height: inherit;
 }
 
 canvas {
@@ -22,7 +13,7 @@ canvas {
   display: flex;
   flex-direction: row; 
   justify-content: flex-start;
-  max-height: 3em;
+  height: 50px;
 }
 
 div.DPControlsCntainer > div {
@@ -31,17 +22,15 @@ div.DPControlsCntainer > div {
   justify-content: flex-start;
 }
 
-.DPControlsCntainer > * {
-  margin-right: 1em;
-}
-
 #playButton {
   min-width: 5.5em;
+  margin-right: 1em;
+  height: 50px;
 }
 
 .accordion {
   z-index: 1;
-  width: 30%;
+  width: 33%;
 }
 
 .accordion > * {
@@ -49,7 +38,7 @@ div.DPControlsCntainer > div {
 }
 
 .accordion-button {
-  max-height: 3em;
+  height: 45px;
 }
 
 .accordion-collapse {
@@ -61,7 +50,6 @@ div.DPControlsCntainer > div {
   display: flex;
   flex-direction: column; 
   justify-content: flex-start;
-  overflow: scroll;
 }
 
 .accordion-body input {
@@ -72,13 +60,6 @@ div.DPControlsCntainer > div {
   margin-bottom: 0.5em;
 }
 
-.accordion-body * {
-  margin-bottom: 0;
-}
-
-.accordion-item {
-  background-color: #61dafb;
-}
 
 .accordion-item:last-of-type {
   border-radius: 0;
@@ -133,13 +114,14 @@ div.slider label.form-label {
   width: 3em;
 }
 
-
-
-@media (max-width: 1500px) {
+@media (max-width: 800px) {
   .accordion {
-    width: 55%;
+    width: calc(100% - 7em);
   }
+}
 
+
+@media (max-width: 1300px) {
   .slider{ 
     flex: 1;
     display: flex;
@@ -148,5 +130,12 @@ div.slider label.form-label {
 
   div.slider input.form-range {
     margin-right: 0;
+  }
+}
+
+@media (max-height: 450px) {
+  .accordion-body {
+    height: 80vh;
+    overflow: scroll;
   }
 }

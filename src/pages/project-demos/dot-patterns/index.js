@@ -4,11 +4,13 @@ import Canvas from '../../../components/Canvas'
 import DotPatternControls from '../../../components/DotPatternControls'
 import './style.css'
 
+const controlsHeight = 50;
 const width =  window.innerWidth;
-const height =  window.innerHeight;
+const height =  window.innerHeight - controlsHeight;
+console.log(height);
 
 const x0 = width / 2;
-const y0 = height / 2;
+const y0 = height / 2 + controlsHeight; 
 
 function random(min, max) {
   const num = Math.floor(Math.random() * (max - min + 1)) + min;
@@ -49,7 +51,7 @@ function randomDots(numDots) {
     while(dots.length < numDots) {
     const dot = new Dot(
         random(1, width - 1),
-        random(1, height - 1),
+        random(controlsHeight + 1, height + controlsHeight- 1),
         1
     );
     dots.push(dot);
@@ -59,11 +61,12 @@ function randomDots(numDots) {
 
 function latticeDots(rows) {
     let dots = [];
-    const spacing = height / rows;
     const paddingTop = 5;
-    const cols = Math.floor(width - paddingTop/ spacing);
-    for (let i = 0; i <= rows; i++) {
-    for (let j = 0; j <= cols; j++) {
+    const paddingBottom = 5;
+    const spacing = (height - paddingTop - paddingBottom) / (rows - 1);
+    const cols = Math.floor(width / spacing);
+    for (let i = 0; i < rows; i++) {
+    for (let j = 0; j < cols; j++) {
         const dot = new Dot(
         j * spacing + paddingTop,
         i * spacing + paddingTop,
@@ -137,7 +140,7 @@ class DotPatterns extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="dot-patterns">
                 <DotPatternControls 
                     playButtonClick={() => this.playButtonClick()}
                     autoRunButtonClick={() => this.autoRunButtonClick()}
@@ -156,6 +159,8 @@ class DotPatterns extends React.Component {
                     draw={(ctx) => this.play(ctx)} 
                     reset={this.state.reset}
                     autoRun={this.state.autoRun}
+                    height={height}
+                    width={width}
                 />
             </div>
         );

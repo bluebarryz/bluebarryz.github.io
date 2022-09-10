@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 
 function Slider(props) {
-    //console.log("Slider");
     return (
         <div className="slider">
             <label htmlFor={props.sliderID} className="form-label">{props.sliderName}</label>
@@ -19,7 +18,6 @@ function Slider(props) {
 }
 
 function FormCheck(props) {
-    //console.log("FormCheck");
     return (
         <div className="form-check form-check-inline">
             <input
@@ -38,7 +36,6 @@ function FormCheck(props) {
 
 class Form extends React.Component {
     render() {
-        //console.log("Form");
         return (
             <form className="dot-arrangement-form">
                 <fieldset>
@@ -94,7 +91,6 @@ class DotPatternControls extends React.Component {
     }
 
     render() {
-        //console.log("DotPatternControls");
         let numDotsSlider;
         if (this.state.dotArrangement === "lattice") {
             numDotsSlider = {
@@ -110,7 +106,7 @@ class DotPatternControls extends React.Component {
             };
         }
         return (
-            <div className="DPControlsCntainer">
+            <div id ="dpControls" className="DPControlsCntainer">
                 <div>
                     <button
                         id="playButton"

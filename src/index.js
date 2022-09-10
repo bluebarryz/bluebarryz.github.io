@@ -7,18 +7,10 @@ import reportWebVitals from './misc/reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  // <React.StrictMode>
-  //   <App />
-  // </React.StrictMode>
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />}></Route>
       <Route path="/dot-patterns" element={<DotPatterns />}></Route>
-      <Route
-        path="/project-demos/dot-patterns/dot-patterns"
-        render={() => { window.location.href = "dot-patterns.html" }}
-      >
-      </Route>
     </Routes>
   </BrowserRouter>
 );

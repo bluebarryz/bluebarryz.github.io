@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react'
 
 const Canvas = props => {
-  const { draw, autoRun, reset, ...rest } = props;
+  const { draw, autoRun, reset, height, width, ...rest } = props;
   const canvasRef = useRef(null);
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -30,9 +30,10 @@ const Canvas = props => {
   
   return (
     <canvas
+      id="dotsCanvas"
       ref={canvasRef}
-      width={window.innerWidth}
-      height={window.innerHeight}
+      width={width}
+      height={height}
       {...rest}
     />
   );
