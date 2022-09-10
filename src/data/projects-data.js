@@ -14,7 +14,7 @@ const ProjectsData = [
         image: deviceXchange,
         description: "An animated game for creating beautiful patterns by rotating dots on the screen",
         tools: "JavaScript, React, CSS",
-        link: "https://github.com/mathlord2/JAMHacks-V",
+        link: "https://bluebarryz.github.io/dot-patterns",
     },
     {
         name: "Genetic Drift Simulator",
