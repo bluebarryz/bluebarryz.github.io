@@ -9,6 +9,7 @@ const Canvas = props => {
     let animationFrameId;
 
     const render = () => {
+      console.log("draw");
       if (!reset) {
         if (!animationFrameId || (animationFrameId % 50 === 0)) {
           draw(ctx);
