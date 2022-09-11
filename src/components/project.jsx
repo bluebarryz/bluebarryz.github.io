@@ -2,6 +2,16 @@ import React, { Component } from 'react'
 
 function Project(props) {
     const data = props.data;
+    let links = [];
+    for (const link of data.links) {
+        links.push(
+            <div key={link.name} className="align-self-end proj-link">
+                <a href={link.src} target="_blank">
+                    {link.icon}{link.name}
+                </a>
+            </div> 
+        )
+    }
     return (
         <div className="project col-md">
             <h3>{data.name}</h3>
@@ -11,11 +21,9 @@ function Project(props) {
             />
             <p>{data.description}</p>
             <p>Tools: {data.tools}</p>  
-            <div className="col-md align-self-end proj-github">
-                <a href={data.link} target="_blank">
-                    <i className="fa-brands fa-github"></i>Github Link
-                </a>
-            </div>         
+            <div className="project-links justify-content-start">
+                {links}    
+            </div>              
         </div> 
     );
 }

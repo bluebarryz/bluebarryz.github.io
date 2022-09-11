@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { ThemeConsumer } from 'react-bootstrap/esm/ThemeProvider';
-import Canvas from '../../../components/Canvas'
-import DotPatternControls from '../../../components/DotPatternControls'
+import Canvas from './components/Canvas'
+import DotPatternControls from './components/DotPatternControls'
 import './style.css'
 
 const controlsHeight = 50;
@@ -96,6 +96,10 @@ class DotPatterns extends React.Component {
             numDots: 80,
         };
     }
+
+    componentDidMount() {
+        document.title = "Dot Patterns";
+      }
 
     play(ctx) {
         for (const dot of this.state.dotsArray) {

@@ -105,7 +105,7 @@ class DotPatternControls extends React.Component {
             };
         }
         return (
-            <div id ="dpControls" className="DPControlsCntainer">
+            <div id="dpControls" className="DPControlsCntainer">
                 <div>
                     <button
                         id="playButton"
@@ -115,14 +115,14 @@ class DotPatternControls extends React.Component {
                     </button>
                 </div>
 
-                <div className="accordion" id="accordionExample">
+                <div className="accordion" id="controlsAccordion">
                     <div className="accordion-item">
-                        <h2 className="accordion-header" id="headingOne">
-                            <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <h2 className="accordion-header" id="controlsAccordionHeader">
+                            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                                 Controls
                             </button>
                         </h2>
-                        <div id="collapseOne" className="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div id="collapseOne" className="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                             <div className="accordion-body">
                                 <button
                                     id="autoRunToggle"
