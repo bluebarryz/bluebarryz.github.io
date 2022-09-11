@@ -12,7 +12,7 @@ function Slider(props) {
                 min={props.min} max={props.max} step={props.step}
                 onChange={props.handleChange}
             ></input>
-            <label htmlFor={props.sliderID} className="form-label slider-value">{props.value}</label>
+            <label htmlFor={props.sliderID} className="form-label slider-value">{props.value + props.unit}</label>
         </div>
     );
 }
@@ -96,7 +96,6 @@ class DotPatternControls extends React.Component {
             numDotsSlider = {
                 sliderName: "Number of Rows of Dots",
                 min: "1", max: "200", step: "1",
-                sendValuesToApp: this.props.numDotsChanged
             };
         } else {
             numDotsSlider = {
@@ -142,7 +141,7 @@ class DotPatternControls extends React.Component {
                                     sliderName="Radius Scaler"
                                     min="0.9" max="1.1" step="0.01"
                                     value={this.state.radiusScalar}
-                                    sendValuesToApp={this.props.radiusScalarChanged}
+                                    unit={''}
                                     handleChange={(e) => this.handleChangeSlider(e, this.props.radiusScalarChanged)}
                                 />
                                 <Slider
@@ -150,7 +149,7 @@ class DotPatternControls extends React.Component {
                                     sliderName="Rotation Angle"
                                     min="0.1" max="5" step="0.01"
                                     value={this.state.rotationAngle}
-                                    sendValuesToApp={this.props.rotationAngleChanged}
+                                    unit={' \u00B0'}
                                     handleChange={(e) => this.handleChangeSlider(e, this.props.rotationAngleChanged)}
                                 />
                                 <Form
@@ -164,7 +163,7 @@ class DotPatternControls extends React.Component {
                                     max={numDotsSlider.max}
                                     step="1"
                                     value={this.state.numDots}
-                                    sendValuesToApp={this.props.numDotsChanged}
+                                    unit={''}
                                     handleChange={(e) => this.handleChangeSlider(e, this.props.numDotsChanged)}
                                 />
                             </div>

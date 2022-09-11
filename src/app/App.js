@@ -6,15 +6,13 @@ import { Route, Switch } from "react-router-dom";
 
 class App extends Component {
   render() {
-    console.log("app start?");
-    //console.log(DotPatterns);
     return (
       <div className="app">
         <Switch>
           <Route exact path="/">
             <Home />
           </Route>
-          <Route path="/dots">
+          <Route path="/dot-patterns">
             <DotPatterns />
           </Route>
         </Switch>

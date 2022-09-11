@@ -20,6 +20,10 @@ function degToRad(angle) {
     return angle * Math.PI / 180;
 }
 
+function radToDegrees(radAng) {
+    return radAng * 180 / Math.PI;
+}
+
 class Dot {
     constructor(x, y, size) {
         this.x = x;
@@ -50,7 +54,7 @@ function randomDots(numDots) {
     while(dots.length < numDots) {
     const dot = new Dot(
         random(1, width - 1),
-        random(controlsHeight + 1, height + controlsHeight- 1),
+        random(1, height - 1),
         1
     );
     dots.push(dot);
@@ -148,7 +152,7 @@ class DotPatterns extends React.Component {
                     radiusScalarChanged={(radScaler) => this.radiusScalarChanged(radScaler)}
                     radiusScalar={this.values.radiusScaler}
                     rotationAngleChanged={(rotationAng) => this.rotationAngleChanged(rotationAng)}
-                    rotationAngle={this.values.radiusScaler}
+                    rotationAngle={radToDegrees(this.values.rotationAngle)}
                     dotArrangementChanged={(arrangement) => this.dotArrangementChanged(arrangement)}
                     dotArrangement={this.values.dotArrangement}
                     numDotsChanged={(value) => this.numDotsChanged(value)}
