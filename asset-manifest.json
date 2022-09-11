@@ -1,17 +1,15 @@
 {
   "files": {
     "main.css": "/static/css/main.d24579ab.css",
-    "main.js": "/static/js/main.31adf2a3.js",
-    "static/js/787.27daab9a.chunk.js": "/static/js/787.27daab9a.chunk.js",
+    "main.js": "/static/js/main.b900384d.js",
     "static/media/genetic-drift.gif": "/static/media/genetic-drift.6765e2e5e2e7f93becd1.gif",
     "static/media/deviceXchange.jpg": "/static/media/deviceXchange.b94137f3796ee95e46f1.jpg",
     "index.html": "/index.html",
     "main.d24579ab.css.map": "/static/css/main.d24579ab.css.map",
-    "main.31adf2a3.js.map": "/static/js/main.31adf2a3.js.map",
-    "787.27daab9a.chunk.js.map": "/static/js/787.27daab9a.chunk.js.map"
+    "main.b900384d.js.map": "/static/js/main.b900384d.js.map"
   },
   "entrypoints": [
     "static/css/main.d24579ab.css",
-    "static/js/main.31adf2a3.js"
+    "static/js/main.b900384d.js"
   ]
 }
