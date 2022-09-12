@@ -1,5 +1,5 @@
 ## Dot Patterns
-<a href="https://bluebarryz.github.io/#/dot-patterns">bluebarryz.github.io/#/dot-patterns</a>
+Try it here: <a href="https://bluebarryz.github.io/#/dot-patterns">bluebarryz.github.io/#/dot-patterns</a>
 <p>An animated game for creating beautiful patterns by rotating an array of dots on the screen. Runs on
 desktop and mobile devices.</p>
 
@@ -21,3 +21,7 @@ desktop and mobile devices.</p>
 <p>... you can create ...</p>
 <img src="./readme/random-spiral.png" alt="dots arranged in a spiral-like pattern. started off as a random scattering of dots" />
 <img src="./readme/random-small-rotation.png" alt="dots arranged in a ray-like pattern. started off as a random scattering of dots" />
+
+
+<br>
+<p>Try it here: <a href="https://bluebarryz.github.io/#/dot-patterns">bluebarryz.github.io/#/dot-patterns</a></p>
