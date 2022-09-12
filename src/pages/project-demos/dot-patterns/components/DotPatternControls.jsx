@@ -141,7 +141,7 @@ class DotPatternControls extends React.Component {
                                     sliderName="Radius Scaler"
                                     min="0.9" max="1.1" step="0.01"
                                     value={this.state.radiusScalar}
-                                    unit={''}
+                                    unit={'x'}
                                     handleChange={(e) => this.handleChangeSlider(e, this.props.radiusScalarChanged)}
                                 />
                                 <Slider
