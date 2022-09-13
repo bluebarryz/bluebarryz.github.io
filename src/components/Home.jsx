@@ -9,7 +9,7 @@ class Home extends Component {
       <div className="homepage">
         <div className="top-heading">
           <h1>Barry's Site</h1>
-          <p>I'm Barry Zhang. This is my website.</p>
+          <p>I'm Barry Zhang. This is where I share some of the things I've worked on. You can also check me out on <a href="https://github.com/bluebarryz" target="_blank">GitHub</a>.</p>
         </div>
         <h2>Projects</h2>
         <Projects />
