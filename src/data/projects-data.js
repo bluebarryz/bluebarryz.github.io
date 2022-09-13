@@ -6,6 +6,7 @@ import databaseBall from "./project-images/database-ball.png"
 const ProjectsData = [
     {
         name: "DeviceXchange",
+        alt: "The user interface for DeviceXchange showing the various ads that users have posted for their used electronics",
         image: deviceXchange,
         description: "A platform for exchanging second-hand electronics and learning about their environmental-friendliness. JamHacks best Environmental/Social Good project 2021.",
         tools: "Node.js, Cheerio, jQuery",
@@ -14,6 +15,7 @@ const ProjectsData = [
     },
     {
         name: "Dot Patterns",
+        alt: "The user interface for the Dot Patterns game. Illustrates a spiral-like pattern created by rotating dots displayed on the screen",
         image: dotPatterns,
         description: "An animated game for creating beautiful patterns by rotating dots on the screen. Runs on desktop and mobile devices.",
         tools: "JavaScript, React, CSS",
@@ -22,6 +24,7 @@ const ProjectsData = [
     },
     {
         name: "Genetic Drift Simulator",
+        alt: "A GIF of the cellular automaton simulation for Genetic Drift",
         image: geneticDrift,
         description: "An interactive Genetic Drift simulation (cellular automaton).",
         tools: "Java/Processing",
@@ -29,6 +32,7 @@ const ProjectsData = [
     },
     {
         name: "Database-ball",
+        alt: "The user interface for the database-ball web app that displays various statistics and visualizations",
         image: databaseBall,
         description: "A beautiful web app for analyzing baseball sabermetrics.",
         tools: "Python, H2O Wave",

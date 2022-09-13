@@ -18,6 +18,7 @@ function Project(props) {
             <img 
                 className="proj-img"
                 src={data.image}
+                alt={data.alt}
             />
             <p>{data.description}</p>
             <p>Tools: {data.tools}</p>  
