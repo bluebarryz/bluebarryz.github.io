@@ -22,7 +22,7 @@ function Project(props) {
             />
             <p>{data.description}</p>
             <p>Tools: {data.tools}</p>  
-            <div className="project-links justify-content-start">
+            <div className="project-links">
                 {links}    
             </div>              
         </div> 
