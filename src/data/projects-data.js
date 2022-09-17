@@ -36,7 +36,8 @@ const ProjectsData = [
         image: databaseBall,
         description: "A beautiful web app for analyzing baseball sabermetrics.",
         tools: "Python, H2O Wave",
-        links: [{src: "https://github.com/bluebarryz/Database-ball", name: "GitHub Link - Database-ball", icon: <i className="faIcon fa-brands fa-github"></i>}],
+        links: [{src: "https://database-ball.herokuapp.com/databaseball", name: "Demo Link - Database-ball", icon: <i class="faIcon fa-solid fa-arrow-pointer"></i>},
+                {src: "https://github.com/bluebarryz/Database-ball", name: "GitHub Link - Database-ball", icon: <i className="faIcon fa-brands fa-github"></i>}],
     },
 
 ]
