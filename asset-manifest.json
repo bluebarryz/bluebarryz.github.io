@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/static/css/main.3a1a4cf6.css",
-    "main.js": "/static/js/main.a27cb138.js",
+    "main.js": "/static/js/main.9ed728b7.js",
     "static/media/genetic-drift.gif": "/static/media/genetic-drift.6765e2e5e2e7f93becd1.gif",
     "static/media/dot-patterns.png": "/static/media/dot-patterns.70e84f4d8429baf2cd55.png",
-    "static/media/database-ball.png": "/static/media/database-ball.59bd0ead265d16f93ee4.png",
+    "static/media/soccerStats.png": "/static/media/soccerStats.4aa1e6b24f9ba6003647.png",
     "static/media/deviceXchange.jpg": "/static/media/deviceXchange.b94137f3796ee95e46f1.jpg",
     "index.html": "/index.html",
     "main.3a1a4cf6.css.map": "/static/css/main.3a1a4cf6.css.map",
-    "main.a27cb138.js.map": "/static/js/main.a27cb138.js.map"
+    "main.9ed728b7.js.map": "/static/js/main.9ed728b7.js.map"
   },
   "entrypoints": [
     "static/css/main.3a1a4cf6.css",
-    "static/js/main.a27cb138.js"
+    "static/js/main.9ed728b7.js"
   ]
 }
