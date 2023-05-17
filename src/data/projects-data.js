@@ -10,7 +10,7 @@ const ProjectsData = [
         image: deviceXchange,
         description:
             "A platform for exchanging second-hand electronics and learning about their environmental-friendliness. Won JAMHacks best Environmental/Social Good project 2021.",
-        tools: "Node.js, Cheerio, jQuery",
+        tools: "Node.js, Cheerio, jQuery, React, MongoDB, Express.js",
         links: [
             {
                 src: "https://github.com/mathlord2/JAMHacks-V",
